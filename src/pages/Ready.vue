@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <img v-show="aniVar.purse === 0" src="../../assets/ready/laugh_01.png">
-    <img v-show="aniVar.purse === 1" src="../../assets/ready/laugh_02.png">
-    <img v-show="aniVar.purse === 2" src="../../assets/ready/laugh_03.png">
-    <img v-show="aniVar.purse === 3" src="../../assets/ready/laugh_04.png">
+  <div class="ready">
+    <img v-show="aniVar.purse === 0" src="../assets/laugh_01.png">
+    <img v-show="aniVar.purse === 1" src="../assets/laugh_02.png">
+    <img v-show="aniVar.purse === 2" src="../assets/laugh_03.png">
+    <img v-show="aniVar.purse === 3" src="../assets/laugh_04.png">
+    <img src="../assets/rules.png" alt="">
+    <img src="../assets/readyWords.png" alt="">
   </div>
 
 </template>
 
 <script>
-  import { aniLoop } from '../../util'
+  import { aniLoop } from '../util'
 
   export default {
     name: 'ready',
@@ -32,5 +34,10 @@
 </script>
 
 <style scoped>
+  .ready {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
 
+  }
 </style>
