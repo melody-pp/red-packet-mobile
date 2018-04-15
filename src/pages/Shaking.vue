@@ -14,7 +14,8 @@
 <style scoped lang="scss">
   .shakingWord {
     color: #fff;
-    font-size: 5vw;
+    font-size: 4vw;
+    font-weight: 500;
     width: 100%;
     position: absolute;
     left: 50%;
