@@ -7,7 +7,10 @@
 
 <script>
   export default {
-    name: 'App'
+    name: 'App',
+    mounted(){
+      window.userId = location.search.slice(1)
+    }
   }
 </script>
 

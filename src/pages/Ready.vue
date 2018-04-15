@@ -33,11 +33,12 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .ready {
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 </style>

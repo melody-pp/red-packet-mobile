@@ -7,7 +7,24 @@
 
 <script>
   export default {
-    name: 'shaking'
+    name: 'shaking',
+    data () {
+      return {}
+    },
+    mounted () {
+      this.getEnd()
+    },
+    methods: {
+      getEnd () {
+        this.axios.post('/rockend').then(data => {
+          if (+data.data.status === 3) {
+            this.$router.push('/prize')
+          } else {
+            this.getEnd()
+          }
+        })
+      }
+    }
   }
 </script>
 

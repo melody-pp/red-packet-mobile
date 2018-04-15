@@ -5,16 +5,23 @@
       <img src="../assets/openRedPacket.png" alt="">
       <div class="congratulations">
         <p>恭喜您</p>
-        <p>获得<span>88</span>元现金红包</p>
+        <p>获得<span>{{money}}</span>元现金红包</p>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Prize'
+    name: 'Prize',
+    data: () => ({
+      money: 0
+    }),
+    mounted () {
+      this.axios.post('/get_hongbaoren', {id: window.userId}).then(data => {
+        this.money = data.data.money
+      })
+    }
   }
 </script>
 
