@@ -6,18 +6,18 @@
       <img v-show="aniVar.purse === 2" src="../assets/laugh_03.png">
       <img v-show="aniVar.purse === 3" src="../assets/laugh_04.png">
     </div>
-    <div v-show="activity===0">
+    <div v-show="status===1">
       <img src="../assets/yugao.png" alt="">
-      <span class="startTime">{{startTime}}</span>
+      <span class="startTime">{{nextTime}}</span>
     </div>
 
-    <img v-show="activity===1" src="../assets/readyWords.png" alt="">
+    <img v-show="status===4" src="../assets/readyWords.png" alt="">
     <img src="../assets/rulesBG.png">
     <div class="content">
       <p>1、每人每天可参加多场，每场有一次摇红包机会</p>
       <P>2、现场主持人口令开始后，派发红包的同时，未进入用户不可进入本场活动</P>
       <p>3、一切规则及活动安排，以现场主持人的口令为准</p>
-      <p>4、活动时间每日11:00、13:00、14:00、15:00、16:00</p>
+      <p>4、活动时间每日{{timeList.join('、')}}</p>
       <p>5、*本活动最终解释权归中国·众泰集团有限公司所有</p>
     </div>
 
@@ -35,13 +35,14 @@
         aniVar: {
           purse: null,
         },
-        activity: 0,
+        timeList: ['11:00', '13:00', '15:00'],
         status: 1,
-        startTime: '0'
+        nextTime: '11:00'
       }
     },
     mounted () {
       this.animate()
+      this.getTimeList()
       this.mobileStart()
     },
     methods: {
@@ -49,14 +50,19 @@
         aniLoop(this, 'purse', 4, 200)
       },
       mobileStart () {
-        this.axios.post('/get_status').then(data => {
-          this.activity = +data.data[0].activity
-          this.startTime = data.data[0].time1
-          if (+data.data[0].status === 1) {
+        this.axios.post('/get_status').then(({data: {data: [data]}}) => {
+          this.status = +data.status  // 1未开始 2活动中 3已结束 4准备开始
+          this.nextTime = data.nextTime
+          if (+this.status === 2) {
             this.$router.push('/shaking')
           } else {
             this.mobileStart()
           }
+        })
+      },
+      getTimeList () {
+        this.axios.post('/get_timeList').then(({data: {data}}) => {
+          this.timeList = data
         })
       }
     },
