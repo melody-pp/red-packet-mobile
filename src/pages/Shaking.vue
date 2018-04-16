@@ -1,14 +1,12 @@
 <template>
-  <div class="shaking">
+  <div>
     <img src="../assets/shaking.png" :class="{animated:true,shaking}">
     <p class="shakingWord">摇红包开始啦，使劲摇！不要停！</p>
   </div>
 </template>
 
 <script>
-  import { throttle } from '../util'
-
-  const SHAKE_THRESHOLD = 6000
+  const SHAKE_THRESHOLD = 4000
   let last_update = 0
   let last_x = 0, last_y = 0, last_z = 0
 
@@ -21,7 +19,6 @@
     },
     created () {
       this.shakeHandler = this.shakeHandler.bind(this)
-      this.shakeAnimate = throttle(this.shakeAnimate, 1000).bind(this)
     },
     mounted () {
       this.getEnd()
@@ -47,7 +44,7 @@
           const speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000
 
           if (speed > SHAKE_THRESHOLD) {
-            this.shakeAnimate()
+            setTimeout(() => this.shakeAnimate(), 500)
           }
 
           last_x = x
@@ -57,6 +54,10 @@
         }
       },
       shakeAnimate () {
+        if (this.shaking) {
+          return
+        }
+
         this.shaking = true
         setTimeout(() => this.shaking = false, 900)
       }
@@ -80,7 +81,7 @@
   }
 
   .animated {
-    animation-duration: .8s;
+    animation-duration: 1.2s;
     animation-fill-mode: both;
   }
 
@@ -90,7 +91,7 @@
     }
 
     50% {
-      transform: rotateZ(10deg);
+      transform: rotateZ(40deg);
     }
 
     100% {
@@ -99,6 +100,7 @@
   }
 
   .shaking {
+    transform-origin: 45% 60%;
     animation-name: shaking;
   }
 </style>
