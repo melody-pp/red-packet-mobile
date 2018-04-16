@@ -8,7 +8,7 @@ Vue.use(Router)
 
 export default new Router({
   mode:'history',
-  base: '/zhongtai/foreEnd/',
+  base: '/zhongtai/fe-mobile/',
   routes: [
     {
       path: '/',

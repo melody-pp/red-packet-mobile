@@ -44,7 +44,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/zhongtai/foreEnd/',
+    assetsPublicPath: '/zhongtai/fe-mobile/',
 
     /**
      * Source Maps
