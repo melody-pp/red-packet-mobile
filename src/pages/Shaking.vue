@@ -16,8 +16,9 @@
     },
     methods: {
       getEnd () {
-        this.axios.post('/rockend').then(data => {
-          if (+data.data.status === 3) {
+        this.axios.post('/get_status').then(data => {
+          if (+data.data[0].status === 0) {
+            console.log(+data.data.status)
             this.$router.push('/prize')
           } else {
             this.getEnd()
