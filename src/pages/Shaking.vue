@@ -102,5 +102,7 @@
   .shaking {
     transform-origin: 45% 60%;
     animation-name: shaking;
+
   }
+
 </style>

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <!--<img src="./assets/logo.png">-->
+    <img src="./assets/mobileTitle.png" class="mobileTitle">
+    <img src="./assets/mobileBg.jpg" class="mobileBg">
     <router-view/>
   </div>
 </template>
@@ -8,7 +10,7 @@
 <script>
   export default {
     name: 'App',
-    mounted(){
+    mounted () {
       window.userId = location.search.slice(1)
     }
   }
@@ -31,9 +33,20 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-size: cover;
-    background-image: url("./assets/mobileTitle.png"), url("./assets/mobileBg.jpg");
     position: relative;
+  }
+
+  .mobileTitle {
+    position: absolute;
+    top: -5vh;
+    left: 0;
+    z-index: 4;
+  }
+
+  .mobileBg {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   img {

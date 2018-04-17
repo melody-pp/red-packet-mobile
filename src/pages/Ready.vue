@@ -12,7 +12,7 @@
     </div>
 
     <img v-show="status===4" src="../assets/readyWords.png" alt="">
-    <img src="../assets/rulesBG.png">
+    <img class="rulesBG" src="../assets/rulesBG.png">
     <div class="content">
       <p>1、每人每天可参加多场，每场有一次摇红包机会</p>
       <P>2、现场主持人口令开始后，派发红包的同时，未进入用户不可进入本场活动</P>
@@ -54,7 +54,9 @@
           this.status = +data.status  // 1未开始 2活动中 3已结束 4准备开始
           this.nextTime = data.nextTime
           if (+this.status === 2) {
-            this.$router.push('/shaking')
+            setTimeout(() => {
+              this.$router.push('/shaking')
+            }, 6000)
           } else {
             this.mobileStart()
           }
@@ -71,20 +73,25 @@
 
 <style scoped lang="scss">
   .ready {
+
     img {
       position: absolute;
-      top: 0;
+      top: -3vh;
       left: 0;
     }
     .purse {
       img {
-        top: -3vh;
+        top: -4.5vh;
       }
+    }
+    .rulesBG {
+      height: 120%;
+      top: -19vh;
     }
     .startTime {
       position: absolute;
       left: 44vw;
-      top: 40.5vh;
+      top: 37.5vh;
       padding: 0.3vw;
       background-color: #fff;
       transform: rotateZ(13deg);
@@ -95,11 +102,11 @@
 
     }
     .content {
-      font-size: 3vw;
+      font-size: 2.6vw;
       color: #f3ea80;
       opacity: 0.8;
       position: absolute;
-      bottom: 1vh;
+      bottom: 1.9vh;
       padding: 0 6vw;
       p {
         margin: 0;
