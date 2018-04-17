@@ -38,12 +38,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 6;
+    z-index: 6 !important;
     .redPacketImg {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 10;
+      z-index: 10 !important;
     }
     .congratulations {
       font-size: 5vw;

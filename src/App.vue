@@ -12,7 +12,7 @@
     name: 'App',
     mounted () {
       window.userId = (new URL(window.location.href)).searchParams.get('userid')
-      alert(userId)
+      // alert(userId)
     }
   }
 </script>

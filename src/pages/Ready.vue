@@ -67,9 +67,7 @@
           this.status = +data.data[0].status  // 1未开始 2活动中 3已结束 4准备开始
 
           if (+this.status === 2) {
-            setTimeout(() => {
-              this.$router.push('/shaking')
-            }, 6000)
+            this.$router.push('/shaking')
           } else {
             this.mobileStart()
           }
@@ -88,19 +86,19 @@
       position: absolute;
       top: -3vh;
       left: 0;
-      z-index: 10;
+      z-index: 10 !important;
     }
     .purse {
       img {
         top: -4.5vh;
-        z-index: 10;
+        z-index: 10 !important;
 
       }
     }
     .rulesBG {
       height: 120%;
       top: -19vh;
-      z-index: 10;
+      z-index: 10 !important;
     }
     .startTime {
       position: absolute;
@@ -113,7 +111,7 @@
       font-weight: 800;
       color: #f13c3c;
       text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
-      z-index: 10;
+      z-index: 10 !important;
 
     }
     .content {
@@ -123,7 +121,7 @@
       position: absolute;
       bottom: 2.2vh;
       padding: 0 5.2vw;
-      z-index: 10;
+      z-index: 10 !important;
       p {
         margin: 0;
         padding: 0;
