@@ -15,15 +15,11 @@
   export default {
     name: 'Prize',
     data: () => ({
-      money: 0,
+      money: '',
       isOpen: 0
     }),
     mounted () {
-      this.axios.get('/get_money', {
-        params: {
-          userid: userId
-        }
-      }).then(data => {
+      this.axios.post('/get_money', {userid: userId}).then(data => {
         this.money = data.data[0].money
       })
     }
