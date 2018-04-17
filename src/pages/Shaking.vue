@@ -81,6 +81,7 @@
   }
 
   .animated {
+    transform: rotateZ(0deg);
     animation-duration: 1.2s;
     animation-fill-mode: both;
   }
@@ -102,7 +103,6 @@
   .shaking {
     transform-origin: 45% 60%;
     animation-name: shaking;
-
   }
 
 </style>
