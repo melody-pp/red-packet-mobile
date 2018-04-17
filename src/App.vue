@@ -11,7 +11,8 @@
   export default {
     name: 'App',
     mounted () {
-      window.userId = location.search.slice(1)
+      window.userId = (new URL(window.location.href)).searchParams.get('userid')
+      alert(userId)
     }
   }
 </script>
@@ -40,17 +41,21 @@
     position: absolute;
     top: -5vh;
     left: 0;
-    z-index: 4;
+    z-index: 3;
   }
 
   .mobileBg {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
   }
 
   img {
     width: 100%;
     height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 </style>

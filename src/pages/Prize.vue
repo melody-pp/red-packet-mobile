@@ -1,8 +1,8 @@
 <template>
   <div class="prize">
-    <img v-show="isOpen===0" src="../assets/closeRedPacket.png" @click="isOpen=1">
+    <img class="redPacketImg" v-show="isOpen===0" src="../assets/closeRedPacket.png" @click="isOpen=1">
     <div v-show="isOpen===1">
-      <img src="../assets/openRedPacket.png" alt="">
+      <img class="redPacketImg" src="../assets/openRedPacket.png" alt="">
       <div class="congratulations">
         <p>恭喜您</p>
         <p>获得<span>{{money}}</span>元现金红包</p>
@@ -35,6 +35,16 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    .redPacketImg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
     .congratulations {
       font-size: 5vw;
       color: #ffce18;

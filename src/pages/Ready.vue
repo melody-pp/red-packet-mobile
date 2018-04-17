@@ -35,24 +35,37 @@
         aniVar: {
           purse: null,
         },
-        timeList: ['11:00', '13:00', '15:00'],
+        timeList: [],
         status: 1,
         nextTime: '11:00'
       }
     },
     mounted () {
       this.animate()
-      this.getTimeList()
       this.mobileStart()
+      this.axios.post('/get_nexttime').then(data => {
+          this.nextTime = data.data[0].timed
+        }
+      )
+      this.axios.post('/get_status').then(data => {
+          this.timeList.push(data.data[0].time1)
+          this.timeList.push(data.data[0].time2)
+          this.timeList.push(data.data[0].time3)
+          this.timeList.push(data.data[0].time4)
+          this.timeList.push(data.data[0].time5)
+        }
+      )
     },
     methods: {
       animate () {
         aniLoop(this, 'purse', 4, 200)
-      },
+      }
+      ,
       mobileStart () {
-        this.axios.post('/get_status').then(({data: {data: [data]}}) => {
-          this.status = +data.status  // 1未开始 2活动中 3已结束 4准备开始
-          this.nextTime = data.nextTime
+        this.axios.post('/get_status').then(data => {
+          console.log(+data.data[0].status)
+          this.status = +data.data[0].status  // 1未开始 2活动中 3已结束 4准备开始
+
           if (+this.status === 2) {
             setTimeout(() => {
               this.$router.push('/shaking')
@@ -61,13 +74,10 @@
             this.mobileStart()
           }
         })
-      },
-      getTimeList () {
-        this.axios.post('/get_timeList').then(({data: {data}}) => {
-          this.timeList = data
-        })
       }
-    },
+
+    }
+    ,
   }
 </script>
 
@@ -78,15 +88,19 @@
       position: absolute;
       top: -3vh;
       left: 0;
+      z-index: 10;
     }
     .purse {
       img {
         top: -4.5vh;
+        z-index: 10;
+
       }
     }
     .rulesBG {
       height: 120%;
       top: -19vh;
+      z-index: 10;
     }
     .startTime {
       position: absolute;
@@ -99,6 +113,7 @@
       font-weight: 800;
       color: #f13c3c;
       text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+      z-index: 10;
 
     }
     .content {
@@ -106,8 +121,9 @@
       color: #f3ea80;
       opacity: 0.8;
       position: absolute;
-      bottom: 1.9vh;
-      padding: 0 6vw;
+      bottom: 2.2vh;
+      padding: 0 5.2vw;
+      z-index: 10;
       p {
         margin: 0;
         padding: 0;

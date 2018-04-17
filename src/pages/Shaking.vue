@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/shaking.png" :class="{animated:true,shaking}">
+    <img style="z-index:6;" src="../assets/shaking.png" :class="{animated:true,shaking}">
     <p class="shakingWord">摇红包开始啦，使劲摇！不要停！</p>
   </div>
 </template>
@@ -78,6 +78,7 @@
     left: 50%;
     top: 80%;
     transform: translate(-50%, -50%);
+    z-index: 6;
   }
 
   .animated {
